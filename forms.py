@@ -8,3 +8,7 @@ class MyForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     submit = SubmitField('Submit')
 
+class RegistrationForm(FlaskForm):
+    username =StringField('username',validators=[DataRequired()])
+    email =StringField('Email',validators=[DataRequired(),Email()])
+    submit =SubmitField('Submit')
