@@ -1,9 +1,45 @@
-<!DOCTYPE html -->
-<html>
-	<head>
-		<title>Login page</title>
-	</head>
-	<body>
-		<h1>Coming Soon...</h1>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Login</h1>
+        <form method="POST" action="{{ url_for('login') }}">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label(class="form-label") }}
+                <div class="input-group">
+                    {{ form.password(class="form-control", id="password") }}
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" onclick="togglePassword()">Show</button>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
+        </form>
+    </div>
+
+    <script>
+        function togglePassword() {
+            var passwordField = document.getElementById("password");
+            var button = passwordField.nextElementSibling.firstElementChild;
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                button.textContent = "Hide";
+            } else {
+                passwordField.type = "password";
+                button.textContent = "Show";
+            }
+        }
+    </script>
+</body>
 </html>
